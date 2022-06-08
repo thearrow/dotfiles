@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 
-# install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+if ! command -v brew &> /dev/null
+then
+    # install homebrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
 
-# install chezmoi
-brew install chezmoi
+if ! command -v chezmoi &> /dev/null
+then
+    # install chezmoi
+    brew install chezmoi
+fi
 
 # install dotfiles
 chezmoi init --apply --verbose https://github.com/thearrow/dotfiles.git
