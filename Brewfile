@@ -16,6 +16,7 @@ cask "zoom"
 
 brew "awscli"
 brew "bat"
+brew "bottom"
 brew "ccat"
 brew "chezmoi"
 brew "click"
