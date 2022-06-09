@@ -1,0 +1,14 @@
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+
+Host pi
+  HostName 192.168.1.229
+  User ubuntu
+  IdentityFile ~/.ssh/id_rsa
+  
+Host spotshipper
+  HostName app.spotshipper.com
+  User root
+  IdentityFile ~/.ssh/spotshipper
