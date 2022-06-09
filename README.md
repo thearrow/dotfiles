@@ -17,4 +17,5 @@ chezmoi init --apply --verbose https://github.com/thearrow/dotfiles.git
 # - point iterm2 preferences to ~/
 # - import istatmenus settings and add license key
 # - install jetbrains IDEs and sync settings
+# - configure nextdns
 ```
