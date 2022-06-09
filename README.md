@@ -12,4 +12,6 @@ chezmoi init --apply --verbose https://github.com/thearrow/dotfiles.git
 
 # run setup script
 ./setup.sh
+
+# grab ssh keys from bitwarden
 ```
