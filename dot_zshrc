@@ -32,10 +32,6 @@ zinit wait lucid light-mode depth=1 for \
   OMZP::pyenv \
   OMZP::yarn \
   as"completion" \
-    OMZP::cargo/_cargo \
-  as"completion" \
-    OMZP::rust/_rust \
-  as"completion" \
     OMZP::docker/_docker \
   as"completion" \
     OMZP::docker-compose/_docker-compose \

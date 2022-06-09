@@ -8,7 +8,7 @@
 brew install chezmoi
 
 # install dotfiles
-chezmoi init --apply --verbose https://github.com/thearrow/dotfiles.git
+chezmoi init --apply --verbose git@github.com:thearrow/dotfiles.git
 
 # run setup script
 ./setup.sh
