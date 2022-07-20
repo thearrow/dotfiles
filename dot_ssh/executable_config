@@ -8,6 +8,11 @@ Host pi
   User ubuntu
   IdentityFile ~/.ssh/id_rsa
   
+Host jakeserver
+  HostName 192.168.1.230
+  User jake
+  IdentityFile ~/.ssh/id_rsa
+
 Host spotshipper
   HostName app.spotshipper.com
   User root
