@@ -9,11 +9,8 @@ export DEFAULT_USER="jake"
 export EDITOR="code --wait"
 export KUBE_EDITOR="code --wait"
 export PROJECT_HOME=$HOME/Development
-export GOPATH=$HOME/Development/go
-export POETRY_VIRTUALENVS_IN_PROJECT=true
 
 export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
-export PATH="$PATH:$GOPATH/bin"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="/Users/$DEFAULT_USER/.pyenv/shims:${PATH}"
@@ -51,9 +48,10 @@ export BAT_THEME='TwoDark'
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type d"
-export FZFZ_RECENT_DIRS_TOOL='fasd'
+export FZFZ_RECENT_DIRS_TOOL='zoxide'
 export FZFZ_EXTRA_DIRS="~/Development"
 export GIT_PAGER='delta'
+export POETRY_VIRTUALENVS_IN_PROJECT=true
 export PIPENV_VENV_IN_PROJECT=1
 export LESS='-F -g -i -M -R -S -w -z-4'
 export TIMEFMT='%J:   %U user  -  %S system  -  %P cpu  -  %*E total'$'\n'\
@@ -98,7 +96,7 @@ alias gp='git push'
 alias grm='git rm'
 alias gst='git status'
 alias help='tldr'
-alias hosts='code /etc/hosts'
+alias hosts='$EDITOR /etc/hosts'
 # alias j='z' # see zoxide plugin above
 alias k='kubectl'
 alias kiali='open https://localhost:20001 && kubectl port-forward -n istio-system svc/kiali 20001:20001'
@@ -115,10 +113,6 @@ alias watch='watch --color '
 alias weavescope='open http://localhost:4040 && kubectl port-forward -n weave "$(kubectl get -n weave pod --selector=weave-scope-component=app -o jsonpath="{.items..metadata.name}")" 4040'
 alias yys='yarn && yarn start'
 alias zconf='chezmoi edit .zshrc'
-
-function fdiff {
-  git diff --no-index --color $1 $2 | diff-so-fancy
-}
 
 iterm2_print_user_vars() {
   # iterm2_set_user_var kube-cluster $(kubectx -c)
