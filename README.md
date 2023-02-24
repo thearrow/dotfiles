@@ -20,12 +20,9 @@ chezmoi init --apply --verbose git@github.com:thearrow/dotfiles.git
 ./setup.sh
 ```
 
-5. Configure NextDNS
-```shell
-sudo nextdns install -config $CONFIG_ID -report-client-info -auto-activate
-```
-
 Manually:
+- install Fira Code font
+- configure NextDNS
 - point iterm2 preferences to ~/
 - grab ssh keys from bitwarden
   - `chmod 400 ~/.ssh/id_rsa`
