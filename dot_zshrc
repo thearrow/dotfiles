@@ -6,8 +6,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export DEFAULT_USER="jake"
-export EDITOR="code --wait"
-export KUBE_EDITOR="code --wait"
+export EDITOR="pycharm --wait"
+export KUBE_EDITOR="pycharm --wait"
 export PROJECT_HOME=$HOME/Development
 
 export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
@@ -38,6 +38,10 @@ znap eval zoxide 'zoxide init zsh --cmd j'
 source ~/.fzf.zsh
 znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
 
+znap fpath _colima 'colima completion zsh'
+znap fpath _kubectl 'kubectl completion zsh'
+znap fpath _docker 'curl -fsSL https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker'
+znap fpath _docker-compose 'curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/docker-compose/_docker-compose'
 
 export AWS_VAULT_KEYCHAIN_NAME=login
 export AWS_VAULT_PROMPT=osascript
