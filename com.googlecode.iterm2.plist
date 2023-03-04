@@ -2085,7 +2085,7 @@
 				<key>Has Toolbelt</key>
 				<false/>
 				<key>Height</key>
-				<real>777</real>
+				<real>1079</real>
 				<key>Hide After Opening</key>
 				<false/>
 				<key>Hiding Toolbelt Should Resize Window</key>
@@ -2098,6 +2098,8 @@
 				<integer>12</integer>
 				<key>Screen</key>
 				<integer>0</integer>
+				<key>Scroller Width</key>
+				<real>0.0</real>
 				<key>Selected Tab Index</key>
 				<integer>0</integer>
 				<key>Tabs</key>
@@ -2105,6 +2107,8 @@
 					<dict>
 						<key>Root</key>
 						<dict>
+							<key>Splitter ID</key>
+							<string>1FCFF491-F47F-44FE-9153-5C52B7F38184</string>
 							<key>Subviews</key>
 							<array>
 								<dict>
@@ -2459,6 +2463,8 @@
 											<real>1</real>
 											<key>Idle Code</key>
 											<integer>0</integer>
+											<key>Initial Use Transparency</key>
+											<false/>
 											<key>Jobs to Ignore</key>
 											<array>
 												<string>rlogin</string>
@@ -2957,8 +2963,12 @@
 												<dict>
 													<key>algorithm</key>
 													<integer>0</integer>
+													<key>auto-rainbow style</key>
+													<integer>0</integer>
 													<key>font</key>
 													<string>.AppleSystemUIFont 12</string>
+													<key>remove empty components</key>
+													<false/>
 												</dict>
 												<key>components</key>
 												<array>
@@ -3116,6 +3126,8 @@
 											<string>xterm-256color</string>
 											<key>Thin Strokes</key>
 											<integer>4</integer>
+											<key>Title Components</key>
+											<integer>2</integer>
 											<key>Transparency</key>
 											<real>0.0</real>
 											<key>Unlimited Scrollback</key>
@@ -3133,16 +3145,18 @@
 											<key>Visual Bell</key>
 											<true/>
 											<key>Window Type</key>
-											<integer>1</integer>
+											<integer>12</integer>
 											<key>Working Directory</key>
 											<string>/Users/jake</string>
 										</dict>
 										<key>Columns</key>
-										<integer>158</integer>
+										<integer>214</integer>
 										<key>Commands</key>
 										<array/>
 										<key>Directories</key>
 										<array>
+											<string>/Users/jake</string>
+											<string>/Users/jake</string>
 											<string>/Users/jake</string>
 											<string>/Users/jake</string>
 										</array>
@@ -3154,6 +3168,8 @@
 										<key>Hostname to Shell</key>
 										<dict>
 											<key>jake@Jakes-MacBook-Pro.local</key>
+											<string>zsh</string>
+											<key>jake@MacBook-Pro.localdomain</key>
 											<string>zsh</string>
 										</dict>
 										<key>Hosts</key>
@@ -3170,9 +3186,23 @@
 												<key>User name</key>
 												<string>jake</string>
 											</dict>
+											<dict>
+												<key>Host name</key>
+												<string>MacBook-Pro.localdomain</string>
+												<key>User name</key>
+												<string>jake</string>
+											</dict>
+											<dict>
+												<key>Host name</key>
+												<string>MacBook-Pro.localdomain</string>
+												<key>User name</key>
+												<string>jake</string>
+											</dict>
 										</array>
 										<key>Is UTF-8</key>
 										<true/>
+										<key>Key Labels</key>
+										<dict/>
 										<key>Name Controller State</key>
 										<dict>
 											<key>icon title stack</key>
@@ -3182,19 +3212,17 @@
 										</dict>
 										<key>Program</key>
 										<dict>
-											<key>Command</key>
-											<string>login -fqp "jake"</string>
 											<key>Type</key>
-											<string>Command</string>
+											<string>Shell Launcher</string>
 										</dict>
 										<key>Rows</key>
-										<integer>42</integer>
+										<integer>60</integer>
 										<key>Session GUID</key>
 										<string>F01FD47E-0CB0-4C73-A3B4-F92A8EDDB2F3</string>
 										<key>Short Lived Single Use</key>
 										<false/>
 										<key>Should Expect Current Dir Updates</key>
-										<false/>
+										<true/>
 										<key>Should Expect Prompt Marks</key>
 										<true/>
 										<key>Substitutions</key>
@@ -3202,16 +3230,16 @@
 										<key>Working Directory</key>
 										<string>/Users/jake</string>
 										<key>Working Directory Poller Disabled</key>
-										<false/>
+										<true/>
 									</dict>
 									<key>View Type</key>
 									<string>SessionView</string>
 									<key>frame</key>
 									<dict>
 										<key>height</key>
-										<real>732</real>
+										<real>1034</real>
 										<key>width</key>
-										<real>1280</real>
+										<real>1728</real>
 										<key>x</key>
 										<real>0.0</real>
 										<key>y</key>
@@ -3224,9 +3252,9 @@
 							<key>frame</key>
 							<dict>
 								<key>height</key>
-								<real>732</real>
+								<real>1034</real>
 								<key>width</key>
-								<real>1280</real>
+								<real>1728</real>
 								<key>x</key>
 								<real>0.0</real>
 								<key>y</key>
@@ -3235,6 +3263,8 @@
 							<key>isVertical</key>
 							<false/>
 						</dict>
+						<key>Tab GUID</key>
+						<string>496C90C4-7076-4DE6-A01D-D0E6CE97C954</string>
 					</dict>
 				</array>
 				<key>TerminalGuid</key>
@@ -3247,19 +3277,19 @@
 					<array>
 						<dict>
 							<key>heightAsFraction</key>
-							<real>0.44387096774193546</real>
+							<real>0.44382544103992572</real>
 							<key>name</key>
 							<string>Command History</string>
 						</dict>
 						<dict>
 							<key>heightAsFraction</key>
-							<real>0.22258064516129034</real>
+							<real>0.22284122562674094</real>
 							<key>name</key>
 							<string>Paste History</string>
 						</dict>
 						<dict>
 							<key>heightAsFraction</key>
-							<real>0.3335483870967742</real>
+							<real>0.33333333333333331</real>
 							<key>name</key>
 							<string>Recent Directories</string>
 						</dict>
@@ -3268,7 +3298,7 @@
 				<key>Use Transparency</key>
 				<true/>
 				<key>Width</key>
-				<real>1280</real>
+				<real>1728</real>
 				<key>Window Type</key>
 				<integer>12</integer>
 				<key>X Origin</key>

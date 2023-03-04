@@ -33,7 +33,7 @@ znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
 znap source marlonrichert/zsh-autocomplete
 
-znap eval asdf '$(brew --prefix asdf)/libexec/asdf.sh'
+znap eval rtx 'rtx activate zsh'
 znap eval direnv 'direnv hook zsh'
 znap eval zoxide 'zoxide init zsh --cmd j'
 source ~/.fzf.zsh
@@ -95,6 +95,7 @@ alias gaa='git add --all'
 alias gb='git branch'
 alias gc='git commit -v'
 alias gcd='git checkout develop'
+alias gcm='git commit -m'
 alias gco='git checkout'
 alias gd='git diff'
 alias gf='git fetch'
@@ -104,7 +105,7 @@ alias grm='git rm'
 alias gst='git status'
 alias help='tldr'
 alias hosts='$EDITOR /etc/hosts'
-alias j='ji' # see zoxide plugin above
+# alias j='ji' # see zoxide plugin above
 alias k='kubectl'
 alias kiali='open https://localhost:20001 && kubectl port-forward -n istio-system svc/kiali 20001:20001'
 alias l='exa --git --time-style long-iso -lah'

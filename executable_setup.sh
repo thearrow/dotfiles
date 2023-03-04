@@ -8,6 +8,3 @@ bash -c $(brew --prefix)/opt/fzf/install
 
 # quiet new shell
 touch ~/.hushlogin
-
-# nextdns
-brew install nextdns/tap/nextdns
