@@ -12,9 +12,6 @@ export PROJECT_HOME=$HOME/Development
 
 FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="/Users/$DEFAULT_USER/.pyenv/shims:${PATH}"
 export PATH="$PATH:$HOME/Development/bin"
 
 # download znap if it's not present
@@ -27,9 +24,9 @@ fi
 source "$ZNAP_HOME/znap.zsh"
 
 # install and configure plugins
+source ~/.fzf.zsh # installed via brew
 znap source romkatv/powerlevel10k
 source ~/.p10k.zsh
-znap source zsh-users/zsh-completions
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
 znap source marlonrichert/zsh-autocomplete
@@ -37,16 +34,15 @@ znap source marlonrichert/zsh-autocomplete
 znap eval rtx 'rtx activate zsh'
 znap eval direnv 'direnv hook zsh'
 znap eval zoxide 'zoxide init zsh --cmd j'
-source ~/.fzf.zsh
-znap function _pyenv pyenv 'eval "$( pyenv init - --no-rehash )"'
-compctl -K    _pyenv pyenv
 znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
 
-znap fpath _colima 'colima completion zsh'
-znap fpath _kubectl 'kubectl completion zsh'
-znap fpath _rtx 'rtx complete --shell zsh'
-znap fpath _rustup 'rustup completions zsh'
-znap fpath _cargo 'rustup completions zsh cargo'
+# znap fpath _colima 'colima completion zsh'
+# znap fpath _kubectl 'kubectl completion zsh'
+# znap fpath _rtx 'rtx complete --shell zsh'
+# znap fpath _docker 'curl -fsSL https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker'
+# znap fpath _docker-compose 'curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/docker-compose/_docker-compose'
+# znap fpath _rustup 'rustup completions zsh'
+# znap fpath _cargo 'rustup completions zsh cargo'
 
 zstyle ':autocomplete:history-search:*' list-lines 10
 zstyle ':autocomplete:*' fzf-completion yes
