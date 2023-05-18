@@ -137,6 +137,7 @@ bindkey "^[[1;3D" backward-word
 bindkey "^[[H"    beginning-of-line
 bindkey "^[[F"    end-of-line
 bindkey '^[[Z'    reverse-menu-complete
+bindkey -M menuselect '\r' .accept-line
 
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=101"
