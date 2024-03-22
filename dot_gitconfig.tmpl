@@ -4,14 +4,6 @@
 
 [core]
     excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
-    pager = delta
-
-[interactive]
-    diffFilter = delta --color-only
-
-[delta]
-    navigate = true
-    light = false
 
 [merge]
     conflictstyle = diff3
@@ -20,8 +12,23 @@
     colorMoved = default
 
 [maintenance]
-	repo = /Users/jake/.local/share/znap/powerlevel10k
-	repo = /Users/jake/.local/share/znap/zsh-autocomplete
-	repo = /Users/jake/.local/share/znap/zsh-autosuggestions
-	repo = /Users/jake/.local/share/znap/zsh-snap.git
-	repo = /Users/jake/.local/share/znap/zsh-syntax-highlighting
+	repo = /Users/jake/.local/share/znap/marlonrichert/zsh-autocomplete
+	repo = /Users/jake/.local/share/znap/romkatv/powerlevel10k
+	repo = /Users/jake/.local/share/znap/zsh-users/zsh-autosuggestions
+	repo = /Users/jake/.local/share/znap/zsh-users/zsh-syntax-highlighting
+
+[diff]
+    tool = difftastic
+
+[difftool]
+    prompt = false
+
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+    difftool = true
+
+[alias]
+    dft = difftool
+    dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
