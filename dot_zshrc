@@ -105,13 +105,14 @@ alias gl='git pull'
 alias gp='git push'
 alias grm='git rm'
 alias gst='git status'
+alias gsu='git submodule update'
 alias help='tldr'
 alias hosts='$EDITOR /etc/hosts'
 # alias j='ji' # see zoxide plugin above
 alias k='kubectl'
 alias kiali='open https://localhost:20001 && kubectl port-forward -n istio-system svc/kiali 20001:20001'
-alias l='exa --git --time-style long-iso -lah'
-alias lh='exa --git --time-style long-iso -lh'
+alias l='eza --long --all --git --header --time-style long-iso --icons'
+alias lh='eza --long --git --header --time-style long-iso --icons'
 alias li='colorls -lA'
 alias micro='TERM=xterm-256color micro'
 alias ncdu='ncdu --color dark -rr -x --exclude .git --exclude node_modules'
@@ -122,10 +123,8 @@ alias vussh='vagrant up && vagrant ssh'
 alias watch='watch --color '
 alias weavescope='open http://localhost:4040 && kubectl port-forward -n weave "$(kubectl get -n weave pod --selector=weave-scope-component=app -o jsonpath="{.items..metadata.name}")" 4040'
 alias yys='yarn && yarn start'
-
-zconf() {
-  pycharm --wait $HOME/.zshrc
-}
+alias zcacheclear='rm ${XDG_CACHE_HOME:-$HOME/.cache}/zsh-snap/eval/* && znap compile && znap status'
+alias zconf='chezmoi edit ~/.zshrc'
 
 iterm2_print_user_vars() {
   # iterm2_set_user_var kube-cluster $(kubectx -c)
