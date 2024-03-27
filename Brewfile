@@ -1,7 +1,6 @@
 cask "aws-vault"
 cask "firefox"
 cask "google-chrome"
-cask "google-cloud-sdk"
 cask "iina"
 cask "istat-menus"
 cask "kitty"
