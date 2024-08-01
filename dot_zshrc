@@ -1,10 +1,5 @@
 # zmodload zsh/zprof
 
-# enable powerlevel10k instant prompt. should stay close to the top of ~/.zshrc.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 export DEFAULT_USER="jake"
 export EDITOR="pycharm --wait"
 export KUBE_EDITOR="pycharm --wait"
@@ -23,18 +18,17 @@ fi
 # start znap
 source "$ZNAP_HOME/znap.zsh"
 
-# install and configure plugins
-source ~/.fzf.zsh # installed via brew
-znap source romkatv/powerlevel10k
-source ~/.p10k.zsh
-znap source zsh-users/zsh-autosuggestions
-znap source zsh-users/zsh-syntax-highlighting
-znap source marlonrichert/zsh-autocomplete
-
+znap eval starship 'starship init zsh'  # installed via brew
+znap eval fzf 'fzf --zsh'  # installed via brew
 znap eval mise 'mise activate zsh'
 znap eval direnv 'direnv hook zsh'
 znap eval zoxide 'zoxide init zsh --cmd j'
-znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
+# znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
+
+# install and configure plugins
+znap source marlonrichert/zsh-autocomplete
+znap source zsh-users/zsh-syntax-highlighting
+znap source zsh-users/zsh-autosuggestions
 
 # znap fpath _colima 'colima completion zsh'
 # znap fpath _kubectl 'kubectl completion zsh'
@@ -56,9 +50,6 @@ export BAT_PAGER='never'
 export BAT_THEME='TwoDark'
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type d"
-export FZFZ_RECENT_DIRS_TOOL='zoxide'
-export FZFZ_EXTRA_DIRS="~/Development"
 export GIT_PAGER='delta'
 export POETRY_VIRTUALENVS_IN_PROJECT=true
 export PIPENV_VENV_IN_PROJECT=1
@@ -125,11 +116,6 @@ alias weavescope='open http://localhost:4040 && kubectl port-forward -n weave "$
 alias yys='yarn && yarn start'
 alias zcacheclear='rm ${XDG_CACHE_HOME:-$HOME/.cache}/zsh-snap/eval/* && znap compile && znap status'
 alias zconf='chezmoi edit ~/.zshrc'
-
-iterm2_print_user_vars() {
-  # iterm2_set_user_var kube-cluster $(kubectx -c)
-  # iterm2_set_user_var kube-ns $(kubens -c)
-}
 
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word

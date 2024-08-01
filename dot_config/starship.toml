@@ -1,0 +1,136 @@
+format = """
+[](color_gray_dark)\
+$os\
+$username\
+[ ](bg:color_fg fg:color_gray_dark)\
+$directory\
+[ ](bg:color_bg fg:color_fg)\
+$all\
+$cmd_duration\
+$status\
+$line_break\
+$shell\
+$character
+"""
+add_newline = true
+
+palette = 'one_dark'
+[palettes.one_dark]
+color_fg = '#979eab'
+color_bg = '#282c34'
+color_gray = '#979eab'
+color_gray_dark = '#393e48'
+color_gray_light = '#abb2bf'
+color_red = '#e06c75'
+color_red_dark = '#be5046'
+color_green = '#98c379'
+color_orange = '#e5c07b'
+color_orange_dark = '#d19a66'
+color_yellow = '#e5c07b'
+color_blue = '#61afef'
+color_cyan = '#56b6c2'
+
+[aws]
+disabled = true
+
+[cmd_duration]
+format = '[\[⏱ $duration\]]($style) '
+min_time = 1_000
+show_milliseconds = true
+style = 'color_yellow'
+
+[directory]
+format = '[$path ]($style)'
+repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path ]($style)[$read_only]($read_only_style)'
+style = 'fg:color_bg bg:color_fg'
+repo_root_style = 'bold fg:color_bg bg:color_fg'
+read_only = " 󰌾"
+truncation_length = 6
+truncation_symbol = '…/'
+
+[direnv]
+disabled = true
+format = '[\[$symbol$loaded\]]($style) '
+style = 'color_yellow'
+loaded_msg = ''
+unloaded_msg = ''
+
+[docker_context]
+disabled = true
+
+[fill]
+symbol = ' '
+
+[git_branch]
+disabled = false
+format = '[\[$symbol$branch(:$remote_branch)\]]($style) '
+style = 'color_blue'
+symbol = ' '
+
+[git_metrics]
+disabled = false
+format = '([\[+$added\]]($added_style))([\[-$deleted\]]($deleted_style))'
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = 'color_red'
+
+[nodejs]
+format = '[\[$symbol($version)\]]($style) '
+style = 'color_green'
+
+[os]
+disabled = false
+format = '[$symbol ]($style)'
+style = 'bg:color_gray_dark fg:color_fg'
+
+[os.symbols]
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+EndeavourOS = ""
+Fedora = "󰣛"
+Gentoo = "󰣨"
+Linux = "󰌽"
+Macos = "󰀵"
+Manjaro = ""
+Mint = "󰣭"
+Raspbian = "󰐿"
+RedHatEnterprise = "󱄛"
+Redhat = "󱄛"
+SUSE = ""
+Ubuntu = "󰕈"
+Windows = "󰍲"
+
+[package]
+disabled = true
+
+[python]
+format = '[\[${symbol}(${version}) (\($virtualenv\))\]]($style) '
+symbol = ' '
+style = 'color_green'
+
+[rust]
+format = '[\[$symbol($version)\]]($style) '
+symbol = '󱘗 '
+style = "color_red"
+
+[status]
+disabled = false
+format = '[\[$symbol$status\]]($style) '
+symbol = ''
+style = 'color_red bold'
+
+[swift]
+disabled = true
+
+[username]
+disabled = true
+show_always = true
+format = '[ $user ]($style)'
+style_user = 'bg:color_gray_dark fg:color_fg'
+style_root = 'bg:color_gray_dark fg:color_fg'
