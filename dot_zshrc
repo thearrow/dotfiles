@@ -18,18 +18,6 @@ fi
 # start znap
 source "$ZNAP_HOME/znap.zsh"
 
-znap eval starship 'starship init zsh'  # installed via brew
-znap eval fzf 'fzf --zsh'  # installed via brew
-znap eval mise 'mise activate zsh'
-znap eval direnv 'direnv hook zsh'
-znap eval zoxide 'zoxide init zsh --cmd j'
-# znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
-
-# install and configure plugins
-znap source marlonrichert/zsh-autocomplete
-znap source zsh-users/zsh-syntax-highlighting
-znap source zsh-users/zsh-autosuggestions
-
 # znap fpath _colima 'colima completion zsh'
 # znap fpath _kubectl 'kubectl completion zsh'
 # znap fpath _rtx 'rtx complete --shell zsh'
@@ -186,4 +174,16 @@ zstyle ':completion:*:history-words' menu yes
 # Environment Variables
 zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
 
+znap eval fzf 'fzf --zsh'  # installed via brew
+znap eval mise 'mise activate zsh'
+znap eval direnv 'direnv hook zsh'
+znap eval zoxide 'zoxide init zsh --cmd j'
+
+# install and configure plugins
+znap source marlonrichert/zsh-autocomplete
+znap source zsh-users/zsh-syntax-highlighting
+znap source zsh-users/zsh-autosuggestions
+
+# starship prompt
+znap eval starship 'starship init zsh'  # installed via brew
 # zprof

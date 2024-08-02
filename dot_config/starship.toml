@@ -61,6 +61,9 @@ disabled = true
 [fill]
 symbol = ' '
 
+[gcloud]
+disabled = true
+
 [git_branch]
 disabled = false
 format = '[\[$symbol$branch(:$remote_branch)\]]($style) '
