@@ -135,4 +135,13 @@ setopt AUTO_PARAM_SLASH          # If completed parameter is a directory, add a 
 setopt EXTENDED_GLOB             # Needed for file modification glob modifiers with compinit
 setopt interactivecomments       # Enable automatic completions
 
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # zprof
