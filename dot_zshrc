@@ -14,21 +14,19 @@ ZNAP_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/znap/zsh-snap.git"
 if [ ! -d "$ZNAP_HOME" ]; then
     git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git "$ZNAP_HOME"
 fi
-
 # start znap
 source "$ZNAP_HOME/znap.zsh"
 
-# znap fpath _colima 'colima completion zsh'
-# znap fpath _kubectl 'kubectl completion zsh'
-# znap fpath _rtx 'rtx complete --shell zsh'
-# znap fpath _docker 'curl -fsSL https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker'
-# znap fpath _docker-compose 'curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/docker-compose/_docker-compose'
-# znap fpath _rustup 'rustup completions zsh'
-# znap fpath _cargo 'rustup completions zsh cargo'
+znap source zsh-users/zsh-completions
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-syntax-highlighting
+znap source marlonrichert/zsh-autocomplete
 
-zstyle ':autocomplete:history-search:*' list-lines 10
-zstyle ':autocomplete:*' fzf-completion yes
-zstyle ':autocomplete:recent-dirs' backend zoxide
+znap eval fzf 'fzf --zsh'
+znap eval mise 'mise activate zsh'
+znap eval direnv 'direnv hook zsh'
+znap eval zoxide 'zoxide init zsh --cmd j'
+znap eval starship 'starship init zsh'
 
 export AWS_VAULT_KEYCHAIN_NAME=login
 export AWS_VAULT_PROMPT=osascript
@@ -62,6 +60,7 @@ export CURLFMT='     time_namelookup:  %{time_namelookup}s\n'\
 
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
 alias ~='cd ~'
 alias btm='btm -a -f'
 alias cloc2='tokei'
@@ -87,7 +86,6 @@ alias gst='git status'
 alias gsu='git submodule update'
 alias help='tldr'
 alias hosts='$EDITOR /etc/hosts'
-# alias j='ji' # see zoxide plugin above
 alias k='kubectl'
 alias kiali='open https://localhost:20001 && kubectl port-forward -n istio-system svc/kiali 20001:20001'
 alias l='eza --long --all --git --header --time-style long-iso --icons'
@@ -114,7 +112,6 @@ bindkey -M menuselect '\r' .accept-line
 
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=101"
-
 HISTFILE=~/.zsh_history
 HISTSIZE=20000
 SAVEHIST=20000
@@ -129,61 +126,13 @@ setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing non-existent history.
+setopt COMPLETE_IN_WORD          # Complete from both ends of a word.
+setopt ALWAYS_TO_END             # Move cursor to the end of a completed word.
+setopt PATH_DIRS                 # Perform path search even on command names with slashes.
+setopt AUTO_MENU                 # Show completion menu on a successive tab press.
+setopt AUTO_LIST                 # Automatically list choices on ambiguous completion.
+setopt AUTO_PARAM_SLASH          # If completed parameter is a directory, add a trailing slash.
+setopt EXTENDED_GLOB             # Needed for file modification glob modifiers with compinit
+setopt interactivecomments       # Enable automatic completions
 
-setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
-setopt ALWAYS_TO_END       # Move cursor to the end of a completed word.
-setopt PATH_DIRS           # Perform path search even on command names with slashes.
-setopt AUTO_MENU           # Show completion menu on a successive tab press.
-setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
-setopt AUTO_PARAM_SLASH    # If completed parameter is a directory, add a trailing slash.
-setopt EXTENDED_GLOB       # Needed for file modification glob modifiers with compinit
-unsetopt MENU_COMPLETE     # Do not autoselect the first completion entry.
-unsetopt FLOW_CONTROL      # Disable start/stop characters in shell editor.
-unsetopt CASE_GLOB
-zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path "$HOME/.zcompcache"
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-# Group matches and describe.
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*:matches' group 'yes'
-zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:options' auto-description '%d'
-zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
-zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
-zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
-zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
-zstyle ':completion:*:default' list-prompt '%S%M matches%s'
-zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' verbose yes
-# Fuzzy match mistyped completions.
-zstyle ':completion:*' completer _complete _match _approximate
-zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
-# Directories
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
-zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
-zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'users' 'expand'
-zstyle ':completion:*' squeeze-slashes true
-# History
-zstyle ':completion:*:history-words' stop yes
-zstyle ':completion:*:history-words' remove-all-dups yes
-zstyle ':completion:*:history-words' list false
-zstyle ':completion:*:history-words' menu yes
-# Environment Variables
-zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
-
-znap eval fzf 'fzf --zsh'  # installed via brew
-znap eval mise 'mise activate zsh'
-znap eval direnv 'direnv hook zsh'
-znap eval zoxide 'zoxide init zsh --cmd j'
-
-# install and configure plugins
-znap source marlonrichert/zsh-autocomplete
-znap source zsh-users/zsh-syntax-highlighting
-znap source zsh-users/zsh-autosuggestions
-
-# starship prompt
-znap eval starship 'starship init zsh'  # installed via brew
 # zprof
