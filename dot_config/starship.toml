@@ -73,10 +73,12 @@ symbol = ' '
 [git_metrics]
 disabled = false
 format = '([\[+$added\]]($added_style))([\[-$deleted\]]($deleted_style))'
+added_style = 'color_green'
+deleted_style = 'color_red'
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
-style = 'color_red'
+style = 'color_yellow'
 
 [nodejs]
 format = '[\[$symbol($version)\]]($style) '
