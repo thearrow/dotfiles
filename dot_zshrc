@@ -144,4 +144,21 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
+function set_win_title(){
+    local dir="${PWD/#$HOME/~}"
+    local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+
+    if [[ -n $git_root ]]; then
+        git_root="${git_root/#$HOME/~}"
+        if [[ "$dir" == "$git_root" ]]; then
+            dir=".../${git_root##*/}"
+        else
+            dir="...${dir#$git_root}"
+        fi
+    fi
+
+    echo -ne "\033]0; $dir \007"
+}
+precmd_functions+=(set_win_title)
+
 # zprof
