@@ -19,6 +19,7 @@ export PATH="$PATH:$HOME/Development/bin"
 source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
 antidote load
 eval "$(fzf --zsh)"
+eval "$(mise activate zsh)"
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh --cmd j)"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
