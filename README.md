@@ -22,7 +22,7 @@ chezmoi init --apply --verbose git@github.com:thearrow/dotfiles.git
 
 Manually:
 - install [Fira Code Nerd font](https://www.nerdfonts.com/font-downloads)
-- configure [NextDNS](https://my.nextdns.io/)
+- configure [ControlD](https://controld.com)
 - grab ssh keys from bitwarden
   - `chmod 400 ~/.ssh/id_rsa`
   - `ssh-add --apple-use-keychain ~/.ssh/id_rsa`
