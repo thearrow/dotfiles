@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # zmodload zsh/zprof
 
 export DEFAULT_USER="jake"
@@ -9,24 +16,12 @@ FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
 export PATH="$PATH:$HOME/Development/bin"
 
-# download znap if it's not present
-ZNAP_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/znap/zsh-snap.git"
-if [ ! -d "$ZNAP_HOME" ]; then
-    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git "$ZNAP_HOME"
-fi
-# start znap
-source "$ZNAP_HOME/znap.zsh"
-
-znap source zsh-users/zsh-completions
-znap source zsh-users/zsh-autosuggestions
-znap source zsh-users/zsh-syntax-highlighting
-znap source marlonrichert/zsh-autocomplete
-
-znap eval fzf 'fzf --zsh'
-znap eval mise 'mise activate zsh'
-znap eval direnv 'direnv hook zsh'
-znap eval zoxide 'zoxide init zsh --cmd j'
-znap eval starship 'starship init zsh'
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+antidote load
+eval "$(fzf --zsh)"
+eval "$(direnv hook zsh)"
+eval "$(zoxide init zsh --cmd j)"
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export AWS_VAULT_KEYCHAIN_NAME=login
 export AWS_VAULT_PROMPT=osascript
@@ -88,7 +83,7 @@ alias help='tldr'
 alias hosts='$EDITOR /etc/hosts'
 alias k='kubectl'
 alias kiali='open https://localhost:20001 && kubectl port-forward -n istio-system svc/kiali 20001:20001'
-alias l='eza --long --all --git --header --time-style long-iso --icons'
+alias l='eza --long --all --git --header --group --time-style long-iso --icons'
 alias lh='eza --long --git --header --time-style long-iso --icons'
 alias li='colorls -lA'
 alias micro='TERM=xterm-256color micro'
