@@ -7,17 +7,28 @@
 // from the command palette.
 [
   {
-    "context": "Workspace",
     "bindings": {
-      "cmd-shift-p": "projects::OpenRecent",
+      // rebind reset font size to add shift
+      "cmd-shift-0": [
+        "zed::ResetBufferFontSize",
+        {
+          "persist": false
+        }
+      ],
+      "cmd-1": "project_panel::ToggleFocus",
       "cmd-2": "terminal_panel::ToggleFocus",
+      "cmd-4": "outline_panel::ToggleFocus",
+      "cmd-0": "git_panel::ToggleFocus",
+      "cmd-shift-p": "projects::OpenRecent",
       "cmd-alt-g": "git::Branch"
     }
   },
   {
+    "context": "Workspace",
+    "bindings": {}
+  },
+  {
     "context": "Editor",
-    "bindings": {
-      // "j k": ["workspace::SendKeystrokes", "escape"]
-    }
+    "bindings": {}
   }
 ]
