@@ -7,11 +7,19 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "base_keymap": "JetBrains",
   "telemetry": {
     "metrics": false,
     "diagnostics": false
   },
+  "auto_install_extensions": {
+    "dockerfile": true,
+    "html": true,
+    "make": true,
+    "ruff": true,
+    "sql": true,
+    "terraform": true
+  },
+  "base_keymap": "JetBrains",
   "theme": {
     "mode": "system",
     "light": "One Light",
