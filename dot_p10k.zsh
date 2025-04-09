@@ -1743,3 +1743,59 @@ typeset -g POWERLEVEL9K_CONFIG_FILE=${${(%):-%x}:a}
 
 (( ${#p10k_config_opts} )) && setopt ${p10k_config_opts[@]}
 'builtin' 'unset' 'p10k_config_opts'
+
+
+# =================================================================================================
+# p10k mise segments from: https://github.com/romkatv/powerlevel10k/issues/2212#issuecomment-2488875426
+() {
+  function prompt_mise() {
+    local plugins=("${(@f)$(mise ls --current 2>/dev/null | awk '!/\(symlink\)/ && $3!="~/.tool-versions" && $3!="~/.config/mise/config.toml" {print $1, $2}')}")
+    local plugin
+    for plugin in ${(k)plugins}; do
+      local parts=("${(@s/ /)plugin}")
+      local tool=${(U)parts[1]}
+      local version=${parts[2]}
+      p10k segment -r -i "${tool}_ICON" -s $tool -t "$version"
+    done
+  }
+
+  # Colors
+  typeset -g POWERLEVEL9K_MISE_BACKGROUND=238
+
+  typeset -g POWERLEVEL9K_MISE_DOTNET_CORE_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_ELIXIR_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_ERLANG_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_FLUTTER_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_GO_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_GO_FOREGROUND=7
+  typeset -g POWERLEVEL9K_MISE_HASKELL_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_JAVA_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_JULIA_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_LUA_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_NODE_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_NODE_FOREGROUND=7
+  typeset -g POWERLEVEL9K_MISE_PERL_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_PHP_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_PNPM_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_PNPM_FOREGROUND=7
+  typeset -g POWERLEVEL9K_MISE_POSTGRES_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_POSTGRES_FOREGROUND=7
+  typeset -g POWERLEVEL9K_MISE_POETRY_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_POETRY_FOREGROUND=7
+  typeset -g POWERLEVEL9K_MISE_PYTHON_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_PYTHON_FOREGROUND=7
+  typeset -g POWERLEVEL9K_MISE_RUBY_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_RUST_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_RUST_FOREGROUND=7
+  typeset -g POWERLEVEL9K_MISE_UV_BACKGROUND=238
+  typeset -g POWERLEVEL9K_MISE_UV_FOREGROUND=7
+
+  typeset -g POWERLEVEL9K_PYTHON_ICON=$'\ue73c'
+  typeset -g POWERLEVEL9K_PNPM_ICON=$'\ue865'
+  typeset -g POWERLEVEL9K_POETRY_ICON=$'\ue867'
+  typeset -g POWERLEVEL9K_UV_ICON=$'\uf487'
+
+  # Substitute the default asdf prompt element
+  typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=("${POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS[@]/asdf/mise}")
+}
+# =================================================================================================
