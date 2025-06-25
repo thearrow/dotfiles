@@ -12,12 +12,14 @@
     "diagnostics": false
   },
   "auto_install_extensions": {
+    "basedpyright": true,
     "dockerfile": true,
     "html": true,
     "make": true,
     "ruff": true,
     "sql": true,
-    "terraform": true
+    "terraform": true,
+    "toml": true
   },
   "base_keymap": "JetBrains",
   "theme": {
@@ -34,7 +36,7 @@
   },
   "languages": {
     "Python": {
-      "language_servers": ["ruff", "pyright"],
+      "language_servers": ["ruff", "basedpyright", "!pyright"],
       "format_on_save": "on",
       "formatter": [
         {

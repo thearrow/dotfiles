@@ -19,9 +19,9 @@ export PATH="/opt/homebrew/opt/influxdb@1/bin:$PATH"
 
 source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
 antidote load
-eval "$(fzf --zsh)"
-eval "$(mise activate zsh)"
-eval "$(zoxide init zsh --cmd j)"
+_evalcache fzf --zsh # cached version of: eval "$(fzf --zsh)"
+_evalcache mise activate zsh # cached version of: eval "$(mise activate zsh)"
+_evalcache zoxide init zsh --cmd j # cached version of: eval "$(zoxide init zsh --cmd j)"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export AWS_VAULT_KEYCHAIN_NAME=login
