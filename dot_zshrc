@@ -1,15 +1,8 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 # zmodload zsh/zprof
 
 export DEFAULT_USER="jake"
-export EDITOR="pycharm --wait"
-export KUBE_EDITOR="pycharm --wait"
+export EDITOR="zed --wait"
+export KUBE_EDITOR="zed --wait"
 export PROJECT_HOME=$HOME/Development
 
 FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
@@ -23,7 +16,6 @@ _evalcache starship init zsh # cached version of: eval "$(starship init zsh)"
 _evalcache fzf --zsh # cached version of: eval "$(fzf --zsh)"
 _evalcache mise activate zsh # cached version of: eval "$(mise activate zsh)"
 _evalcache zoxide init zsh --cmd j # cached version of: eval "$(zoxide init zsh --cmd j)"
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export AWS_VAULT_KEYCHAIN_NAME=login
 export AWS_VAULT_PROMPT=osascript
