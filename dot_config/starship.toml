@@ -1,0 +1,223 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](237)\
+$os\
+$username\
+[  ](bg:237 fg:7)\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+[](bg:#282c34 fg:237)\
+$fill\
+[](bg:#282c34 fg:237)\
+$docker_context\
+$package\
+$c\
+$cmake\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$gleam\
+$golang\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$nats\
+$direnv\
+$env_var\
+$mise\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$time\
+$jobs\
+$battery\
+$status\
+$container\
+$netns\
+$shell\
+$line_break\
+$character"""
+
+add_newline = true
+command_timeout = 1000
+
+[os]
+disabled = false
+style = "bg:237"
+[os.symbols]
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Fedora = "󰣛"
+Gentoo = "󰣨"
+Linux = "󰌽"
+Macos = "󰀵"
+Manjaro = ""
+Mint = "󰣭"
+Raspbian = "󰐿"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+SUSE = ""
+Ubuntu = "󰕈"
+Windows = ""
+
+[username]
+disabled = true
+show_always = true
+style_user = "bg:237 fg:7"
+style_root = "bg:237 fg:7"
+format = '[ $user]($style)'
+
+[directory]
+disabled = false
+truncation_length = 0
+truncate_to_repo = false
+format = '[$path]($style)[$read_only ]($read_only_style)'
+style = 'bg:237 fg:bold 4'
+read_only = ""
+read_only_style = 'bg:237 fg:4'
+
+[git_branch]
+symbol = ""
+style = 'bg:237 fg:2'
+format = '[ ](bg:237 fg:7)[$symbol $branch(:$remote_branch) ]($style)'
+
+[git_status]
+style = "bg:237 fg:3"
+format = '([$all_status$ahead_behind ]($style))'
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+modified = "!${count}"
+untracked = "?${count}"
+staged = "+${count}"
+deleted = "-${count}"
+renamed = "»${count}"
+
+[fill]
+symbol = '─'
+style = '237'
+
+[package]
+disabled = true
+
+[mise]
+disabled = false
+symbol = "mise"
+healthy_symbol = " "
+unhealthy_symbol = "󰀦 "
+style = "bg:237 fg:7"
+format = '[ $symbol $health ]($style)[](bg:237 fg:7)'
+
+[nodejs]
+symbol = ""
+style = "bg:237"
+format = '[[ $symbol( $version) ](fg:7 bg:237)]($style)[](bg:237 fg:7)'
+
+[c]
+symbol = " "
+style = "bg:237"
+format = '[[ $symbol( $version) ](fg:7 bg:237)]($style)[](bg:237 fg:7)'
+
+[rust]
+symbol = ""
+style = "bg:237"
+format = '[[ $symbol( $version) ](fg:7 bg:237)]($style)[](bg:237 fg:7)'
+
+[golang]
+symbol = ""
+style = "bg:237"
+format = '[[ $symbol( $version) ](fg:7 bg:237)]($style)[](bg:237 fg:7)'
+
+[php]
+symbol = ""
+style = "bg:237"
+format = '[[ $symbol( $version) ](fg:7 bg:237)]($style)[](bg:237 fg:7)'
+
+[java]
+symbol = " "
+style = "bg:237"
+format = '[[ $symbol( $version) ](fg:7 bg:237)]($style)[](bg:237 fg:7)'
+
+[kotlin]
+symbol = ""
+style = "bg:237"
+format = '[[ $symbol( $version) ](fg:7 bg:237)]($style)[](bg:237 fg:7)'
+
+[haskell]
+symbol = ""
+style = "bg:237"
+format = '[[ $symbol( $version) ](fg:7 bg:237)]($style)[](bg:237 fg:7)'
+
+[python]
+symbol = ""
+style = "bg:237"
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:7 bg:237)]($style)[](bg:237 fg:7)'
+
+[terraform]
+disabled = false
+style = "bg:237 fg:7"
+symbol = ""
+format = '[ $symbol( $version) ]($style)[](bg:237 fg:7)'
+
+[cmd_duration]
+disabled = false
+min_time = 0
+show_milliseconds = true
+format = '[ $duration ](bg:237 fg:7)[ ](bg:237 fg:7)'
+
+[time]
+disabled = false
+use_12hr = true
+format = '[ $time   ](bg:237 fg:7)'
