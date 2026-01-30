@@ -14,11 +14,14 @@ maximize = true
 window-save-state = never
 window-width = 192
 window-height = 60
+window-padding-x = 6
+window-padding-y = 12
 confirm-close-surface = false
 scrollback-limit = 100000000
-bell-features = title,attention,audio,system
+bell-features = title,attention,system
+shell-integration-features = sudo,ssh-env
 
-keybind = super+f=write_screen_file:open
+# keybind = super+f=write_screen_file:open
 keybind = global:alt+grave_accent=toggle_quick_terminal
 
 font-family = FiraCode Nerd Font
