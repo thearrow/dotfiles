@@ -12,23 +12,23 @@
       "cmd-shift-0": [
         "zed::ResetBufferFontSize",
         {
-          "persist": false
-        }
+          "persist": false,
+        },
       ],
       "cmd-1": "project_panel::ToggleFocus",
-      "cmd-2": "terminal_panel::ToggleFocus",
+      "cmd-2": "terminal_panel::Toggle",
       "cmd-4": "outline_panel::ToggleFocus",
       "cmd-0": "git_panel::ToggleFocus",
       "cmd-shift-p": "projects::OpenRecent",
-      "cmd-alt-g": "git::Branch"
-    }
+      "cmd-alt-g": "git::Branch",
+    },
   },
   {
     "context": "Workspace",
-    "bindings": {}
+    "bindings": {},
   },
   {
     "context": "Editor",
-    "bindings": {}
-  }
+    "bindings": {},
+  },
 ]
