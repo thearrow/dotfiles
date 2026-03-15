@@ -10,6 +10,7 @@ export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
 export PATH="$PATH:$HOME/Development/bin"
 export PATH="/opt/homebrew/opt/influxdb@1/bin:$PATH"
 
+autoload -U compinit; compinit
 source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
 antidote load
 _evalcache starship init zsh # cached version of: eval "$(starship init zsh)"
@@ -98,8 +99,6 @@ bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 bindkey "^[[H"    beginning-of-line
 bindkey "^[[F"    end-of-line
-bindkey '^[[Z'    reverse-menu-complete
-bindkey -M menuselect '\r' .accept-line
 
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=101"
@@ -125,6 +124,17 @@ setopt AUTO_LIST                 # Automatically list choices on ambiguous compl
 setopt AUTO_PARAM_SLASH          # If completed parameter is a directory, add a trailing slash.
 setopt EXTENDED_GLOB             # Needed for file modification glob modifiers with compinit
 setopt interactivecomments       # Enable automatic completions
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -134,22 +144,5 @@ function yy() {
 	fi
 	rm -f -- "$tmp"
 }
-
-function set_win_title(){
-    local dir="${PWD/#$HOME/~}"
-    local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
-
-    if [[ -n $git_root ]]; then
-        git_root="${git_root/#$HOME/~}"
-        if [[ "$dir" == "$git_root" ]]; then
-            dir=".../${git_root##*/}"
-        else
-            dir="...${dir#$git_root}"
-        fi
-    fi
-
-    echo -ne "\033]0; $dir \007"
-}
-precmd_functions+=(set_win_title)
 
 # zprof
