@@ -163,7 +163,7 @@ symbol = "mise"
 healthy_symbol = " "
 unhealthy_symbol = "󰀦 "
 style = "bg:237 fg:7"
-format = '[ $symbol $health ]($style)[](bg:237 fg:7)'
+format = '[ $symbol]($style)[ ](bg:237 fg:7)'
 
 [nodejs]
 symbol = "󰎙"
@@ -211,6 +211,7 @@ style = "bg:237"
 format = '[[ $symbol( $version) (\(#$virtualenv\)) ](fg:7 bg:237)]($style)[](bg:237 fg:7)'
 
 [swift]
+disabled = true
 symbol = ""
 style = "bg:237"
 format = '[[ $symbol( $version) ](fg:7 bg:237)]($style)[](bg:237 fg:7)'
